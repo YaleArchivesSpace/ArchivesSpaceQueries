@@ -1,4 +1,5 @@
 SELECT 
+    'top container',
     CONCAT('top_containers/', top_container.id),
     top_container.repo_id,
     top_container.create_time,
@@ -10,6 +11,7 @@ FROM
 WHERE
     user_mtime > '2015-08-30' 
 UNION ALL SELECT  
+    'accession',
     CONCAT('accessions/', accession.id),
     accession.repo_id,
     accession.create_time,
@@ -21,6 +23,7 @@ FROM
 WHERE
     user_mtime > '2015-08-30' 
 UNION ALL SELECT 
+    'resource',
     CONCAT('resources/', resource.id),
     resource.repo_id,
     resource.create_time,
@@ -32,6 +35,7 @@ FROM
 WHERE
     user_mtime > '2015-08-30' 
 UNION ALL SELECT 
+    'archival object',
     CONCAT('resources/',
             resource.id,
             '#tree::archival_object_',
