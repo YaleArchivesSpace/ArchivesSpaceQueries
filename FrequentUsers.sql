@@ -1,4 +1,15 @@
 SELECT 
+    CONCAT('top_containers/', top_container.id),
+    top_container.repo_id,
+    top_container.create_time,
+    top_container.created_by,
+    top_container.user_mtime,
+    top_container.last_modified_by
+FROM
+    top_container
+WHERE
+    user_mtime > '2015-08-30' 
+UNION ALL SELECT  
     CONCAT('accessions/', accession.id),
     accession.repo_id,
     accession.create_time,
@@ -8,7 +19,7 @@ SELECT
 FROM
     accession
 WHERE
-    user_mtime > '2015-06-30' 
+    user_mtime > '2015-08-30' 
 UNION ALL SELECT 
     CONCAT('resources/', resource.id),
     resource.repo_id,
@@ -19,7 +30,7 @@ UNION ALL SELECT
 FROM
     resource
 WHERE
-    user_mtime > '2015-06-30' 
+    user_mtime > '2015-08-30' 
 UNION ALL SELECT 
     CONCAT('resources/',
             resource.id,
@@ -35,4 +46,6 @@ FROM
         JOIN
     resource ON archival_object.root_record_id = resource.id
 WHERE
-    archival_object.user_mtime > '2015-06-30'
+    archival_object.user_mtime > '2015-08-30'
+    
+    order by user_mtime;
