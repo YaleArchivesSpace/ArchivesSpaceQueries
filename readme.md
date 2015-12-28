@@ -4,8 +4,8 @@ Queries in this repository are for 1.yale versions of ArchivesSpace with contain
 
 Queries against 1.yale
 ----------------------
- * AccessNotes.sql -- see all conditions governing access notes, plus machine-actionable restriction information
- * AccessionsFiscalYear.sql -- A report of all the accessions from a given fiscal year
+ * (AccessNotes.sql)[https://github.com/YaleArchivesSpace/ArchivesSpaceQueries/blob/master/1.yale/AccessNotes.sql] -- see all conditions governing access notes, plus machine-actionable restriction information
+ * (AccessionsFiscalYear.sql)[https://github.com/YaleArchivesSpace/ArchivesSpaceQueries/blob/master/1.yale/AccessionsFiscalYear.sql] -- A report of all the accessions from a given fiscal year
  * Components4Display.sql -- oh hell. People encoded for display. 
  * ContainerProfiles.sql -- one way to see the given container profiles in a resource in csv format
  * CountAgentsCountSubjects.sql -- See resources with most agents and subjects associated (was more important before recent ASpace fix)
@@ -15,7 +15,7 @@ Queries against 1.yale
 
 Queries against pre-1.5, no container management plug-in
 --------------------------------------------------------
- * FindRangesBeforeContainerMigration.sql -- See which containers have a dash (should indicate container range)
+ * (FindRangesBeforeContainerMigration.sql)[https://github.com/YaleArchivesSpace/ArchivesSpaceQueries/blob/master/1.4.2/FindRangesBeforeContainerMigration.sql] -- See which containers have a dash (should indicate container range)
 
 Queries against 1.5
 -------------------
@@ -32,12 +32,12 @@ Data monitoring reports
  * bibid -- check against Voyager for accuracy 
  * extent -- arabic numeral
  * extent -- check against preferred terms
- * date certainty attribute (report and/or nuke immediately)
+ * (Certainty.sql)[https://github.com/YaleArchivesSpace/ArchivesSpaceQueries/blob/master/Data%20Monitoring/Certainty.sql] We don't want date certainty attributes
  * filing title present
  * what's marked unpublished?
  * is the restrictions checkbox checked?
  * conditions governing access -- date or non-time-bound -- not both
- * ID for names/subjects
+ * (NamesSubjectsNoIDs.sql)[https://github.com/YaleArchivesSpace/ArchivesSpaceQueries/blob/master/Data%20Monitoring/NamesSubjectsNoIDs.sql] We want for all of our names and subjects to be reconciled to authorities -- these ones don't have an authority link
  * report on processing notes
  * container ranges?
  * finding aid status
