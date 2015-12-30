@@ -10,7 +10,6 @@ Queries against 1.yale
  * ContainerProfiles.sql -- one way to see the given container profiles in a resource in csv format
  * CountAgentsCountSubjects.sql -- See resources with most agents and subjects associated (was more important before recent ASpace fix)
  * FindRangesAfterContainerMigration.sql -- See which containers have a dash (should indicate container range)
- * FrequentUsers.sql -- Counts of who created, updated records
  * MSSAAccessionWorkReport.sql -- see accessions that are new or in process
 
 Queries against pre-1.5, no container management plug-in
@@ -22,13 +21,13 @@ Queries against 1.5
 
 Data monitoring reports
 -----------------------
- * false top container report
+ * [TopContainers2Merge.sql](https://github.com/YaleArchivesSpace/ArchivesSpaceQueries/blob/master/Data%20Monitoring/TopContainers2Merge.sql) false top container report
  * date expression where normalize works
  * date expression != normalized
  * date not normalized
- * series unitid -- series string
- * series unitid -- arabic numeral
- * bibid -- present?
+ * [SeriesStringInUnitid.sql](https://github.com/YaleArchivesSpace/ArchivesSpaceQueries/blob/master/Data%20Monitoring/SeriesStringInUnitid.sql) -- report of all series unitids that have the string "series"
+ * [UnitidNotArabic.sql](https://github.com/YaleArchivesSpace/ArchivesSpaceQueries/blob/master/Data%20Monitoring/UnitidNotArabic.sql) -- UnitID at series level is not an Arabic numeral
+ * [NoBIBID.sql](https://github.com/YaleArchivesSpace/ArchivesSpaceQueries/blob/master/Data%20Monitoring/NoBIBID.sql) -- No bibid resent in resource record
  * bibid -- check against Voyager for accuracy 
  * extent -- arabic numeral
  * extent -- check against preferred terms
@@ -41,5 +40,5 @@ Data monitoring reports
  * report on processing notes
  * container ranges?
  * finding aid status
- * resource type (nuke if present + remind any offenders not to use)
- * who's using archivesspace?
+ * resource type (nuke if present + remind any offenders not to use) 
+ * [FrequentUsers.sql] -- Counts of who created, updated records
