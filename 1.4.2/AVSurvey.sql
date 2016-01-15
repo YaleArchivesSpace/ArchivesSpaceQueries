@@ -9,21 +9,25 @@ SELECT
             ao.id) AS component_URL,
     ao.display_string AS 'component',
     level.value AS level,
-    CONCAT(e.number, ' ', ev.value) AS extent,
-    e.container_summary,
+    e.number AS 'extent number',
+    ev.value AS 'extent type',
+    CONCAT(e.number,
+            ' ',
+            ev.value,
+            e.container_summary) AS 'extent statement',
     CONCAT('http://prodaspace.library.yale.edu:8080/plugins/top_containers/',
             tc.id) AS ContainerURL,
     tc.indicator AS box,
-    tc.barcode as barcode,
+    tc.barcode AS barcode,
     cp.name AS 'container profile',
     l.title AS location
 FROM
     archival_object ao
         LEFT JOIN
     extent e ON ao.id = e.archival_object_id
-        JOIN
+        LEFT JOIN
     enumeration_value ev ON e.extent_type_id = ev.id
-        JOIN
+        LEFT JOIN
     enumeration_value level ON ao.level_id = level.id
         LEFT JOIN
     resource r ON r.id = ao.root_record_id
@@ -39,9 +43,9 @@ FROM
     top_container_profile_rlshp tcpr ON tc.id = tcpr.top_container_id
         LEFT JOIN
     container_profile cp ON cp.id = tcpr.container_profile_id
-        left JOIN
+        LEFT JOIN
     top_container_housed_at_rlshp tchar ON tc.id = tchar.top_container_id
-        left JOIN
+        LEFT JOIN
     location l ON l.id = tchar.location_id
 WHERE
     ((ao.title LIKE '%recording%'
@@ -83,4 +87,6 @@ WHERE
         OR ev.value LIKE '%DV%'
         OR ev.value LIKE '%audio%'))
         AND r.repo_id = 12
+        AND cp.name NOT LIKE '%microfilm%'
+        AND ao.title NOT LIKE '%microfilm%'
 ORDER BY ao.id ASC; 
