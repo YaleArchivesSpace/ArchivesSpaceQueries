@@ -15,8 +15,9 @@ SELECT
             ' ',
             ev.value,
             e.container_summary) AS 'extent statement',
+    itype.value AS 'instance type',
     CONCAT('http://prodaspace.library.yale.edu:8080/plugins/top_containers/',
-            tc.id) AS ContainerURL,
+            tc.id) AS container_URL,
     tc.indicator AS box,
     tc.barcode AS barcode,
     cp.name AS 'container profile',
@@ -33,6 +34,8 @@ FROM
     resource r ON r.id = ao.root_record_id
         LEFT JOIN
     instance i ON i.archival_object_id = ao.id
+        LEFT JOIN
+    enumeration_value itype ON i.instance_type_id = itype.id
         LEFT JOIN
     sub_container sc ON sc.instance_id = i.id
         LEFT JOIN
@@ -89,4 +92,49 @@ WHERE
         AND r.repo_id = 12
         AND cp.name NOT LIKE '%microfilm%'
         AND ao.title NOT LIKE '%microfilm%'
-ORDER BY ao.id ASC; 
+        AND i.instance_type_id = 356 
+UNION ALL SELECT 
+    CONCAT('http://prodaspace.library.yale.edu:8080/resources/',
+            r.id) AS resource_URL,
+    r.title AS 'resource',
+    CONCAT('http://prodaspace.library.yale.edu:8080/resources/',
+            r.id,
+            '#tree::archival_object_',
+            ao.id) AS component_URL,
+    ao.display_string AS 'component',
+    level.value AS level,
+    e.number AS 'extent number',
+    ev.value AS 'extent type',
+    CONCAT(e.number,
+            ' ',
+            ev.value,
+            e.container_summary) AS 'extent statement',
+    itype.value AS 'instance type',
+    CONCAT('http://prodaspace.library.yale.edu:8080/digital_objects',
+            do.id) AS container_URL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+FROM
+    archival_object ao
+        LEFT JOIN
+    extent e ON ao.id = e.archival_object_id
+        LEFT JOIN
+    enumeration_value ev ON e.extent_type_id = ev.id
+        LEFT JOIN
+    enumeration_value level ON ao.level_id = level.id
+        LEFT JOIN
+    resource r ON r.id = ao.root_record_id
+        LEFT JOIN
+    instance i ON i.archival_object_id = ao.id
+        LEFT JOIN
+    enumeration_value itype ON i.instance_type_id = itype.id
+        LEFT JOIN
+    instance_do_link_rlshp idlr ON i.id = idlr.instance_id
+        LEFT JOIN
+    digital_object do ON idlr.digital_object_id = do.id
+WHERE
+    i.instance_type_id = 119987
+        AND r.repo_id = 12
+ORDER BY component_URL ASC;
