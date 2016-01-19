@@ -1,4 +1,5 @@
 use Prod20160114;
+-- this doesn't assume that you have rights to create temp tables or views
 SELECT 
 -- building my column set -- creating URLs that will make it easy to act on this list
     ao.id,
@@ -27,7 +28,6 @@ SELECT
     cp.name AS 'container profile',
     l.title AS location
 FROM
--- this join logic was hard-won.
     archival_object ao
         LEFT JOIN
     extent e ON ao.id = e.archival_object_id
@@ -39,6 +39,7 @@ FROM
         LEFT JOIN
     resource r ON r.id = ao.root_record_id
         LEFT JOIN
+-- this join logic was hard-won.
     instance i ON i.archival_object_id = ao.id
         LEFT JOIN
     enumeration_value itype ON i.instance_type_id = itype.id
@@ -62,8 +63,7 @@ WHERE
         OR ao.title LIKE '%video%'
         OR ao.title LIKE '%audio%'
         OR ao.title LIKE '%VHS%'
--- the inclusion of "film" is going to produce false positives.
-        OR ao.title LIKE '%film%'
+-- the inclusion of "film" is going to produce false positives, so I excluded it, hoping that film in container profiles will cover it.
         OR ao.title LIKE '% sound%'
         OR ao.title LIKE '%Beta%')
         OR (r.title LIKE '%recording%'
@@ -189,7 +189,6 @@ WHERE
                 OR ao.title LIKE '%Beta%')
                 OR (r.title LIKE '%recording%'
                 OR r.title LIKE '%video%'
-                OR r.title LIKE '%film%'
                 OR r.title LIKE '%audio%'
                 OR r.title LIKE '%VHS%'
                 OR r.title LIKE '% sound%'
