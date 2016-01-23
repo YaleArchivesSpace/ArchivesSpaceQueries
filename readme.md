@@ -41,4 +41,4 @@ Data monitoring reports
  * container ranges?
  * finding aid status
  * resource type (nuke if present + remind any offenders not to use) 
- * [FrequentUsers.sql] -- Counts of who created, updated records
+ * [FrequentUsers.sql](https://github.com/YaleArchivesSpace/ArchivesSpaceQueries/blob/master/Data%20Monitoring/FrequentUsers.sql) -- Counts of who created, updated records
