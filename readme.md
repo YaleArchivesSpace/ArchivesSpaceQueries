@@ -15,6 +15,9 @@ Queries against 1.yale
 Queries against pre-1.5, no container management plug-in
 --------------------------------------------------------
  * [FindRangesBeforeContainerMigration.sql](https://github.com/YaleArchivesSpace/ArchivesSpaceQueries/blob/master/1.4.2/FindRangesBeforeContainerMigration.sql) -- See which containers have a dash (should indicate container range)
+ * [CreateCandidates.sql](https://github.com/YaleArchivesSpace/ArchivesSpaceQueries/blob/master/ContainerConversion/CreateCandidates.sql) -- The first step for checking problems with barcodes and locations before converting to top container model
+ * [ProblemBarcodes.sql](https://github.com/YaleArchivesSpace/ArchivesSpaceQueries/blob/master/ContainerConversion/ProblemBarcodes.sql) -- This report will reveal which barcodes have been assigned to more than one container. These must be fixed before conversion.
+ * [QuantumContainers.sql](https://github.com/YaleArchivesSpace/ArchivesSpaceQueries/blob/master/ContainerConversion/QuantumContainers.sql) -- This report will reveal cases where the same container has been assigned to more than one location. This isn't physically possible! These need to be fixed before conversion.
 
 Queries against 1.5
 -------------------
