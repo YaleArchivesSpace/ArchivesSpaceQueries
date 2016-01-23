@@ -2,6 +2,13 @@ Queries against ArchivesSpace
 =============================
 Queries in this repository are for 1.yale versions of ArchivesSpace with container management and accessions plug-ins installed, 1.4.2 with the same plug-ins, and 1.5. We've also written a handful of queries for non-Yale users using pre-1.5 versions without container management plug-ins
 
+Queries against pre-1.5, no container management plug-in
+--------------------------------------------------------
+ * [FindRangesBeforeContainerMigration.sql](https://github.com/YaleArchivesSpace/ArchivesSpaceQueries/blob/master/1.4.2/FindRangesBeforeContainerMigration.sql) -- See which containers have a dash (should indicate container range)
+ * [CreateCandidates.sql](https://github.com/YaleArchivesSpace/ArchivesSpaceQueries/blob/master/ContainerConversion/CreateCandidates.sql) -- The first step for checking problems with barcodes and locations before converting to top container model
+ * [ProblemBarcodes.sql](https://github.com/YaleArchivesSpace/ArchivesSpaceQueries/blob/master/ContainerConversion/ProblemBarcodes.sql) -- This report will reveal which barcodes have been assigned to more than one container. These must be fixed before conversion.
+ * [QuantumContainers.sql](https://github.com/YaleArchivesSpace/ArchivesSpaceQueries/blob/master/ContainerConversion/QuantumContainers.sql) -- This report will reveal cases where the same container has been assigned to more than one location. This isn't physically possible! These need to be fixed before conversion.
+
 Queries against 1.yale
 ----------------------
  * [AccessNotes.sql](https://github.com/YaleArchivesSpace/ArchivesSpaceQueries/blob/master/1.yale/AccessNotes.sql) -- see all conditions governing access notes, plus machine-actionable restriction information
@@ -11,13 +18,6 @@ Queries against 1.yale
  * CountAgentsCountSubjects.sql -- See resources with most agents and subjects associated (was more important before recent ASpace fix)
  * FindRangesAfterContainerMigration.sql -- See which containers have a dash (should indicate container range)
  * MSSAAccessionWorkReport.sql -- see accessions that are new or in process
-
-Queries against pre-1.5, no container management plug-in
---------------------------------------------------------
- * [FindRangesBeforeContainerMigration.sql](https://github.com/YaleArchivesSpace/ArchivesSpaceQueries/blob/master/1.4.2/FindRangesBeforeContainerMigration.sql) -- See which containers have a dash (should indicate container range)
- * [CreateCandidates.sql](https://github.com/YaleArchivesSpace/ArchivesSpaceQueries/blob/master/ContainerConversion/CreateCandidates.sql) -- The first step for checking problems with barcodes and locations before converting to top container model
- * [ProblemBarcodes.sql](https://github.com/YaleArchivesSpace/ArchivesSpaceQueries/blob/master/ContainerConversion/ProblemBarcodes.sql) -- This report will reveal which barcodes have been assigned to more than one container. These must be fixed before conversion.
- * [QuantumContainers.sql](https://github.com/YaleArchivesSpace/ArchivesSpaceQueries/blob/master/ContainerConversion/QuantumContainers.sql) -- This report will reveal cases where the same container has been assigned to more than one location. This isn't physically possible! These need to be fixed before conversion.
 
 Queries against 1.5
 -------------------
