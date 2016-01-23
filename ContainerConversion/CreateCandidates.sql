@@ -1,4 +1,3 @@
-use OldRAC;
 start transaction;
 create temporary table top_container_candidates
 SELECT 
